@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog_list</title>
+</head>
+<body>
+    <h1>blog_list 페이지 입니다.</h1>
+{#    <ul>#}
+{#        <li><a href="/blog/1">게시물1</a></li>#}
+{#        <li><a href="/blog/2">게시물2</a></li>#}
+{#        <li><a href="/blog/3">게시물3</a></li>#}
+{#    </ul>#}
+
+<ul>
+        {% for blog in blog_list %}
+        <li><a href="/blog/{{blog.id}}">{{blog.title}}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% for i in hello %}
+    <p>{{i}}</p>
+    {% endfor %}
+</body>
+</html>

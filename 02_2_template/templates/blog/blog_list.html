@@ -1,0 +1,23 @@
+<!-- templates/blog/blog_list.html -->
+
+{% extends 'base/base.html' %}
+{% block content %}
+    <h2>bloglist</h2>
+    <ul>
+        {% for blog in object_list %}
+            <li>
+                {{ forloop.counter }}
+                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block binky %}
+    <h2>binky test</h2>
+{% endblock %}
+{% block mura %}
+    <script>
+        console.log('mura test');
+    </script>
+{% endblock %}
