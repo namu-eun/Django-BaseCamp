@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django 템플릿 태그 예시</title>
+</head>
+<body>
+<h1>Django 템플릿 태그 예시</h1>
+
+<h2>1. 변수 출력</h2>
+<p>이름: {{ user.name }}</p>
+<p>이메일: {{ user.email }}</p>
+
+<h2>2. 조건문</h2>
+{% if user.age >= 20 %}
+    <p>{{ user.name }}님은 성인입니다.</p>
+{% else %}
+    <p>{{ user.name }}님은 미성년자입니다.</p>
+{% endif %}
+
+<h2>3. 반복문</h2>
+<ul>
+    {% for post in posts %}
+        <li>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content|linebreaks }}</p>
+            <small>작성일: {{ post.date|date:"Y년 m월 d일" }}</small>
+        </li>
+    {% empty %}
+        <li>게시글이 없습니다.</li>
+    {% endfor %}
+</ul>
+
+<h2>4. 필터 사용</h2>
+<p>첫 번째 글 내용 (5단어): {{ posts.0.content|truncatewords:5 }}</p>
+<p>첫 번째 글 내용 길이: {{ posts.0.content|length }}</p>
+
+<h2>5. forloop 변수</h2>
+<ul>
+    {% for number in numbers %}
+        <li>
+            {{ forloop.counter }}번째 숫자: {{ number }}
+            {% if forloop.first %}(첫 번째){% endif %}
+            {% if forloop.last %}(마지막){% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>6. with 태그</h2>
+{% with total=numbers|length %}
+    <p>numbers 리스트의 길이: {{ total }}</p>
+{% endwith %}
+
+<h2>7. lorem 태그</h2>
+{% lorem 2 p %}
+
+<h2>8. now 태그</h2>
+<p>현재 날짜 및 시간: {% now "Y년 m월 d일 H:i" %}</p>
+
+</body>
+</html>

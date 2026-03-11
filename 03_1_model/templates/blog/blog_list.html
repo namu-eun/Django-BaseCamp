@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>게시판</h1>
+<form action="" method="get">
+    <input name="q" type="search">
+    <button type="submit">검색</button>
+</form>
+<ul>
+    <!-- 전체 게시물이 어떻게 불러와지는지 확인해보세요. -->
+    {% for post in object_list %}
+        <li>
+            <a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
